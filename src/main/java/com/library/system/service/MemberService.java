@@ -59,21 +59,36 @@ public class MemberService {
 
     @Transactional
     public MemberDTO registerMember(MemberRequestDTO request) {
-        // Create User first if provided, or assume implicit linking?
-        // Prompt says "Register member (ADMIN/LIBRARIAN)".
-        // We will create a new User with Role MEMBER for simplicity.
+        User user;
 
+        // Check if user already exists
         if (userRepository.existsByEmail(request.getEmail())) {
-            throw new BusinessRuleException("Email already exists");
-        }
+            user = userRepository.findByEmail(request.getEmail())
+                    .orElseThrow(() -> new ResourceNotFoundException("User not found")); // Should not happen given
+                                                                                         // exists check
 
-        User user = new User();
-        user.setUsername(request.getUsername());
-        user.setEmail(request.getEmail());
-        user.setFullName(request.getFullName());
-        user.setPassword(passwordEncoder.encode(request.getPassword()));
-        user.setRole(Role.MEMBER);
-        user = userRepository.save(user);
+            // Check if this user already has a member profile
+            if (memberRepository.findByUserUserId(user.getUserId()).isPresent()) {
+                throw new BusinessRuleException("User with this email already has a member profile.");
+            }
+
+            // If user exists but no profile, we will link to this user
+            // Optional: Update user details (name, username) if they provided new ones?
+            // For now, we strictly link.
+        } else {
+            // Create new user
+            if (userRepository.existsByUsername(request.getUsername())) {
+                throw new BusinessRuleException("Username is already taken");
+            }
+
+            user = new User();
+            user.setUsername(request.getUsername());
+            user.setEmail(request.getEmail());
+            user.setFullName(request.getFullName());
+            user.setPassword(passwordEncoder.encode(request.getPassword()));
+            user.setRole(Role.MEMBER);
+            user = userRepository.save(user);
+        }
 
         Member member = new Member();
         member.setUser(user);

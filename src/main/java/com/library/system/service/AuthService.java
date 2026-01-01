@@ -20,17 +20,20 @@ public class AuthService {
     private final JwtService jwtService;
     private final AuthenticationManager authenticationManager;
     private final com.library.system.security.CustomUserDetailsService userDetailsService;
+    private final com.library.system.repository.MemberRepository memberRepository;
 
     public AuthService(UserRepository userRepository,
             PasswordEncoder passwordEncoder,
             JwtService jwtService,
             AuthenticationManager authenticationManager,
-            com.library.system.security.CustomUserDetailsService userDetailsService) {
+            com.library.system.security.CustomUserDetailsService userDetailsService,
+            com.library.system.repository.MemberRepository memberRepository) {
         this.userRepository = userRepository;
         this.passwordEncoder = passwordEncoder;
         this.jwtService = jwtService;
         this.authenticationManager = authenticationManager;
         this.userDetailsService = userDetailsService;
+        this.memberRepository = memberRepository;
     }
 
     public AuthResponse register(RegisterRequest request) {
@@ -48,7 +51,19 @@ public class AuthService {
         user.setPassword(passwordEncoder.encode(request.getPassword()));
         user.setRole(Role.MEMBER); // Default role for public registration
 
-        userRepository.save(user);
+        User savedUser = userRepository.save(user);
+
+        // Auto-create Member profile
+        com.library.system.model.Member member = new com.library.system.model.Member();
+        member.setUser(savedUser);
+        member.setMembershipNumber(java.util.UUID.randomUUID().toString().substring(0, 8).toUpperCase());
+        member.setMembershipType(com.library.system.model.MembershipType.PUBLIC); // Default
+        member.setMembershipStartDate(java.time.LocalDate.now());
+        member.setMembershipEndDate(java.time.LocalDate.now().plusYears(1));
+        member.setActive(true);
+        // Address and Phone are null for self-registration
+
+        memberRepository.save(member);
 
         var userDetails = userDetailsService.loadUserByUsername(user.getUsername());
         var jwtToken = jwtService.generateToken(userDetails);

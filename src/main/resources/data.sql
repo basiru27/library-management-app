@@ -1,15 +1,17 @@
 -- Users (Password is 'password')
-INSERT INTO users (username, email, password, full_name, role) VALUES
-('admin', 'admin@library.com', '$2a$10$xn3LI/AjqicFYZFruSwve.681477XaVNaUQbr1gioaWPn4t1KsnmG', 'Admin User', 'ADMIN'),
-('librarian', 'lib@library.com', '$2a$10$xn3LI/AjqicFYZFruSwve.681477XaVNaUQbr1gioaWPn4t1KsnmG', 'Librarian User', 'LIBRARIAN'),
-('john_doe', 'john@example.com', '$2a$10$xn3LI/AjqicFYZFruSwve.681477XaVNaUQbr1gioaWPn4t1KsnmG', 'John Doe', 'MEMBER'),
-('jane_smith', 'jane@example.com', '$2a$10$xn3LI/AjqicFYZFruSwve.681477XaVNaUQbr1gioaWPn4t1KsnmG', 'Jane Smith', 'MEMBER'),
-('bob_wilson', 'bob@example.com', '$2a$10$xn3LI/AjqicFYZFruSwve.681477XaVNaUQbr1gioaWPn4t1KsnmG', 'Bob Wilson', 'MEMBER'),
-('alice_brown', 'alice@example.com', '$2a$10$xn3LI/AjqicFYZFruSwve.681477XaVNaUQbr1gioaWPn4t1KsnmG', 'Alice Brown', 'MEMBER'),
-('charlie_day', 'charlie@example.com', '$2a$10$xn3LI/AjqicFYZFruSwve.681477XaVNaUQbr1gioaWPn4t1KsnmG', 'Charlie Day', 'MEMBER'),
-('david_miller', 'david@example.com', '$2a$10$xn3LI/AjqicFYZFruSwve.681477XaVNaUQbr1gioaWPn4t1KsnmG', 'David Miller', 'MEMBER'),
-('eve_white', 'eve@example.com', '$2a$10$xn3LI/AjqicFYZFruSwve.681477XaVNaUQbr1gioaWPn4t1KsnmG', 'Eve White', 'MEMBER'),
-('frank_green', 'frank@example.com', '$2a$10$xn3LI/AjqicFYZFruSwve.681477XaVNaUQbr1gioaWPn4t1KsnmG', 'Frank Green', 'MEMBER');
+INSERT INTO users (user_id, username, email, password, full_name, role) VALUES
+(1, 'admin', 'admin@library.com', '$2a$10$2VdGIx4whctzdoP.KPiYy.f7xIdGhU8ci2YnBgfInJRNvOwQl.bQe', 'Admin User', 'ADMIN'),
+(2, 'librarian', 'lib@library.com', '$2a$10$2VdGIx4whctzdoP.KPiYy.f7xIdGhU8ci2YnBgfInJRNvOwQl.bQe', 'Librarian User', 'LIBRARIAN'),
+(3, 'john_doe', 'john@example.com', '$2a$10$2VdGIx4whctzdoP.KPiYy.f7xIdGhU8ci2YnBgfInJRNvOwQl.bQe', 'John Doe', 'MEMBER'),
+(4, 'jane_smith', 'jane@example.com', '$2a$10$2VdGIx4whctzdoP.KPiYy.f7xIdGhU8ci2YnBgfInJRNvOwQl.bQe', 'Jane Smith', 'MEMBER'),
+(5, 'bob_wilson', 'bob@example.com', '$2a$10$2VdGIx4whctzdoP.KPiYy.f7xIdGhU8ci2YnBgfInJRNvOwQl.bQe', 'Bob Wilson', 'MEMBER'),
+(6, 'alice_brown', 'alice@example.com', '$2a$10$2VdGIx4whctzdoP.KPiYy.f7xIdGhU8ci2YnBgfInJRNvOwQl.bQe', 'Alice Brown', 'MEMBER'),
+(7, 'charlie_day', 'charlie@example.com', '$2a$10$2VdGIx4whctzdoP.KPiYy.f7xIdGhU8ci2YnBgfInJRNvOwQl.bQe', 'Charlie Day', 'MEMBER'),
+(8, 'david_miller', 'david@example.com', '$2a$10$2VdGIx4whctzdoP.KPiYy.f7xIdGhU8ci2YnBgfInJRNvOwQl.bQe', 'David Miller', 'MEMBER'),
+(9, 'eve_white', 'eve@example.com', '$2a$10$2VdGIx4whctzdoP.KPiYy.f7xIdGhU8ci2YnBgfInJRNvOwQl.bQe', 'Eve White', 'MEMBER'),
+(10, 'frank_green', 'frank@example.com', '$2a$10$2VdGIx4whctzdoP.KPiYy.f7xIdGhU8ci2YnBgfInJRNvOwQl.bQe', 'Frank Green', 'MEMBER'),
+(11, 'grace_blue', 'grace@example.com', '$2a$10$2VdGIx4whctzdoP.KPiYy.f7xIdGhU8ci2YnBgfInJRNvOwQl.bQe', 'Grace Blue', 'MEMBER'),
+(12, 'harry_potter', 'harry@example.com', '$2a$10$2VdGIx4whctzdoP.KPiYy.f7xIdGhU8ci2YnBgfInJRNvOwQl.bQe', 'Harry Potter', 'MEMBER');
 
 -- Members
 INSERT INTO members (user_id, membership_number, phone_number, address, membership_type, membership_start_date, membership_end_date, is_active) VALUES
@@ -25,19 +27,19 @@ INSERT INTO members (user_id, membership_number, phone_number, address, membersh
 (12, 'MEM010', '555-0110', '741 Ash Pl', 'PUBLIC', CURRENT_DATE, DATE_ADD(CURRENT_DATE, INTERVAL 1 YEAR), true);
 
 -- Books
-INSERT INTO books (isbn, title, author, publication_year, total_copies, available_copies) VALUES
-('978-0134685991', 'Effective Java', 'Joshua Bloch', 2018, 5, 5),
-('978-0321356680', 'Clean Code', 'Robert C. Martin', 2008, 3, 3),
-('978-0131103627', 'The C Programming Language', 'Brian W. Kernighan', 1988, 2, 2),
-('978-0201633610', 'Design Patterns', 'Erich Gamma', 1994, 4, 4),
-('978-0321125217', 'Domain-Driven Design', 'Eric Evans', 2003, 2, 2),
-('978-1617290459', 'Spring in Action', 'Craig Walls', 2018, 3, 3),
-('978-0451524935', '1984', 'George Orwell', 1949, 10, 10),
-('978-0743273565', 'The Great Gatsby', 'F. Scott Fitzgerald', 1925, 8, 8),
-('978-0061120084', 'To Kill a Mockingbird', 'Harper Lee', 1960, 6, 6),
-('978-0452284234', '1984 (Classic)', 'George Orwell', 1949, 5, 5),
-('978-0345391803', 'The Hitchhiker''s Guide to the Galaxy', 'Douglas Adams', 1979, 4, 4),
-('978-0307474278', 'The Da Vinci Code', 'Dan Brown', 2003, 7, 7);
+INSERT INTO books (book_id, isbn, title, author, publication_year, total_copies, available_copies) VALUES
+(1, '978-0134685991', 'Effective Java', 'Joshua Bloch', 2018, 5, 5),
+(2, '978-0321356680', 'Clean Code', 'Robert C. Martin', 2008, 3, 3),
+(3, '978-0131103627', 'The C Programming Language', 'Brian W. Kernighan', 1988, 2, 2),
+(4, '978-0201633610', 'Design Patterns', 'Erich Gamma', 1994, 4, 4),
+(5, '978-0321125217', 'Domain-Driven Design', 'Eric Evans', 2003, 2, 2),
+(6, '978-1617290459', 'Spring in Action', 'Craig Walls', 2018, 3, 3),
+(7, '978-0451524935', '1984', 'George Orwell', 1949, 10, 10),
+(8, '978-0743273565', 'The Great Gatsby', 'F. Scott Fitzgerald', 1925, 8, 8),
+(9, '978-0061120084', 'To Kill a Mockingbird', 'Harper Lee', 1960, 6, 6),
+(10, '978-0452284234', '1984 (Classic)', 'George Orwell', 1949, 5, 5),
+(11, '978-0345391803', 'The Hitchhiker''s Guide to the Galaxy', 'Douglas Adams', 1979, 4, 4),
+(12, '978-0307474278', 'The Da Vinci Code', 'Dan Brown', 2003, 7, 7);
 
 -- Borrowing Records
 -- Active Borrowings

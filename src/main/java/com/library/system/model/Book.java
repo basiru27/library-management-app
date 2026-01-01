@@ -15,7 +15,7 @@ public class Book {
     @Column(name = "book_id")
     private Long bookId;
 
-    @Column(nullable = false, unique = true, length = 13)
+    @Column(nullable = false, unique = true, length = 20)
     private String isbn;
 
     @Column(nullable = false, length = 200)

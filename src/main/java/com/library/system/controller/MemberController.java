@@ -46,7 +46,6 @@ public class MemberController {
 
     @GetMapping("/{id}/borrowing-history")
     public ResponseEntity<List<BorrowingRecordDTO>> getBorrowingHistory(@PathVariable Long id) {
-        // In a real app we'd check if the principal owns this member or is staff
         return ResponseEntity.ok(memberService.getBorrowingHistory(id));
     }
 }

@@ -30,14 +30,12 @@ public class BorrowingController {
     public ResponseEntity<BorrowingRecordDTO> borrowBook(
             @RequestBody @Valid BorrowingRequestDTO request,
             Authentication authentication) {
-        // If MEMBER, ensure they are borrowing for themselves
         boolean isLibrarian = authentication.getAuthorities().stream()
                 .anyMatch(a -> a.getAuthority().equals("ROLE_LIBRARIAN"));
 
         Long memberIdToUse = request.getMemberId();
 
         if (!isLibrarian) {
-            // Resolve member ID from logged in user
             MemberDTO currentMember = memberService.getMemberByEmail(authentication.getName());
             memberIdToUse = currentMember.getMemberId();
         } else {

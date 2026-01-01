@@ -20,9 +20,7 @@ public interface BorrowingRecordRepository extends JpaRepository<BorrowingRecord
 
     long countByMemberAndStatus(Member member, BorrowingStatus status);
 
-    // Check if book is currently borrowed
     boolean existsByBookAndStatus(Book book, BorrowingStatus status);
 
-    // Find overdue books (active borrow + due date passed)
     List<BorrowingRecord> findByStatusAndDueDateBefore(BorrowingStatus status, LocalDate date);
 }

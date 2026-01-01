@@ -72,9 +72,6 @@ public class MemberService {
                 throw new BusinessRuleException("User with this email already has a member profile.");
             }
 
-            // If user exists but no profile, we will link to this user
-            // Optional: Update user details (name, username) if they provided new ones?
-            // For now, we strictly link.
         } else {
             // Create new user
             if (userRepository.existsByUsername(request.getUsername())) {
@@ -112,7 +109,6 @@ public class MemberService {
         member.setPhoneNumber(request.getPhoneNumber());
         member.setAddress(request.getAddress());
         member.setMembershipType(request.getMembershipType());
-        // Could allow updating user details too but keeping it simple
 
         return mapToDTO(memberRepository.save(member));
     }

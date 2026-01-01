@@ -53,13 +53,13 @@ public class BorrowingService {
             throw new BusinessRuleException("Book is not available");
         }
 
-        // Rule 1: Check active borrowings count
+        // Check active borrowings count
         long activeCount = borrowingRecordRepository.countByMemberAndStatus(member, BorrowingStatus.BORROWED);
         if (activeCount >= MAX_BORROW_LIMIT) {
             throw new BusinessRuleException("Member has reached maximum borrowing limit");
         }
 
-        // Rule 1: Check for overdue books
+        // Check for overdue books
         List<BorrowingRecord> activeRecords = borrowingRecordRepository.findByMemberAndStatus(member,
                 BorrowingStatus.BORROWED);
         boolean hasOverdue = activeRecords.stream()
@@ -97,7 +97,7 @@ public class BorrowingService {
         record.setReturnDate(returnDate);
         record.setStatus(BorrowingStatus.RETURNED);
 
-        // Rule 2: Automatic Late Fee Calculation
+        // Automatic Late Fee Calculation
         if (returnDate.isAfter(record.getDueDate())) {
             long overdueDays = ChronoUnit.DAYS.between(record.getDueDate(), returnDate);
             if (overdueDays > 0) {
@@ -120,10 +120,6 @@ public class BorrowingService {
     }
 
     public List<BorrowingRecordDTO> getOverdueBorrowings() {
-        // Logically overdue: Status=BORROWED and DueDate < Now
-        // Note: We might also want to include status=OVERDUE if we had a batch job that
-        // updates statuses.
-        // For now we rely on calculation.
         return borrowingRecordRepository.findByStatusAndDueDateBefore(BorrowingStatus.BORROWED, LocalDate.now())
                 .stream()
                 .map(this::mapToDTO)

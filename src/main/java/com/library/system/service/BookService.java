@@ -61,7 +61,6 @@ public class BookService {
         book.setAuthor(bookDTO.getAuthor());
         book.setPublicationYear(bookDTO.getPublicationYear());
 
-        // Handle copies update carefully
         int newTotal = bookDTO.getTotalCopies();
         int diff = newTotal - book.getTotalCopies();
         book.setTotalCopies(newTotal);
@@ -80,13 +79,13 @@ public class BookService {
         Book book = bookRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Book not found with id: " + id));
 
-        // Rule 3: Prevent Deleting Books with Active Borrowings
+        // Prevent Deleting Books with Active Borrowings
         boolean hasActiveBorrowings = borrowingRecordRepository.existsByBookAndStatus(book, BorrowingStatus.BORROWED);
         if (hasActiveBorrowings) {
             throw new BusinessRuleException("Cannot delete book with active borrowings");
         }
 
-        // Also check if there are OVERDUE books which are technically still active in
+        // Check if there are OVERDUE books which are technically still active in
         // possession
         boolean hasOverdueBorrowings = borrowingRecordRepository.existsByBookAndStatus(book, BorrowingStatus.OVERDUE);
         if (hasOverdueBorrowings) {

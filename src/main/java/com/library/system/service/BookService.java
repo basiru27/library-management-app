@@ -96,12 +96,22 @@ public class BookService {
     }
 
     public List<BookDTO> searchBooks(String title, String author) {
-        if (title == null)
-            title = "";
-        if (author == null)
-            author = "";
-        return bookRepository.findByTitleContainingIgnoreCaseOrAuthorContainingIgnoreCase(title, author)
-                .stream()
+        List<Book> books;
+        boolean hasTitle = title != null && !title.trim().isEmpty();
+        boolean hasAuthor = author != null && !author.trim().isEmpty();
+
+        if (hasTitle && hasAuthor) {
+            books = bookRepository.findByTitleContainingIgnoreCaseOrAuthorContainingIgnoreCase(title.trim(),
+                    author.trim());
+        } else if (hasTitle) {
+            books = bookRepository.findByTitleContainingIgnoreCase(title.trim());
+        } else if (hasAuthor) {
+            books = bookRepository.findByAuthorContainingIgnoreCase(author.trim());
+        } else {
+            books = bookRepository.findAll();
+        }
+
+        return books.stream()
                 .map(this::mapToDTO)
                 .collect(Collectors.toList());
     }

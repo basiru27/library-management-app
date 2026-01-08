@@ -2,29 +2,29 @@
 INSERT INTO users (user_id, username, email, password, full_name, role, created_at, updated_at) VALUES
 (1, 'admin', 'admin@library.com', '$2a$10$2VdGIx4whctzdoP.KPiYy.f7xIdGhU8ci2YnBgfInJRNvOwQl.bQe', 'Admin User', 'ADMIN', NOW(), NOW()),
 (2, 'librarian', 'lib@library.com', '$2a$10$2VdGIx4whctzdoP.KPiYy.f7xIdGhU8ci2YnBgfInJRNvOwQl.bQe', 'Librarian User', 'LIBRARIAN', NOW(), NOW()),
-(3, 'john_doe', 'john@example.com', '$2a$10$2VdGIx4whctzdoP.KPiYy.f7xIdGhU8ci2YnBgfInJRNvOwQl.bQe', 'John Doe', 'MEMBER', NOW(), NOW()),
-(4, 'jane_smith', 'jane@example.com', '$2a$10$2VdGIx4whctzdoP.KPiYy.f7xIdGhU8ci2YnBgfInJRNvOwQl.bQe', 'Jane Smith', 'MEMBER', NOW(), NOW()),
-(5, 'bob_wilson', 'bob@example.com', '$2a$10$2VdGIx4whctzdoP.KPiYy.f7xIdGhU8ci2YnBgfInJRNvOwQl.bQe', 'Bob Wilson', 'MEMBER', NOW(), NOW()),
-(6, 'alice_brown', 'alice@example.com', '$2a$10$2VdGIx4whctzdoP.KPiYy.f7xIdGhU8ci2YnBgfInJRNvOwQl.bQe', 'Alice Brown', 'MEMBER', NOW(), NOW()),
-(7, 'charlie_day', 'charlie@example.com', '$2a$10$2VdGIx4whctzdoP.KPiYy.f7xIdGhU8ci2YnBgfInJRNvOwQl.bQe', 'Charlie Day', 'MEMBER', NOW(), NOW()),
-(8, 'david_miller', 'david@example.com', '$2a$10$2VdGIx4whctzdoP.KPiYy.f7xIdGhU8ci2YnBgfInJRNvOwQl.bQe', 'David Miller', 'MEMBER', NOW(), NOW()),
-(9, 'eve_white', 'eve@example.com', '$2a$10$2VdGIx4whctzdoP.KPiYy.f7xIdGhU8ci2YnBgfInJRNvOwQl.bQe', 'Eve White', 'MEMBER', NOW(), NOW()),
-(10, 'frank_green', 'frank@example.com', '$2a$10$2VdGIx4whctzdoP.KPiYy.f7xIdGhU8ci2YnBgfInJRNvOwQl.bQe', 'Frank Green', 'MEMBER', NOW(), NOW()),
-(11, 'grace_blue', 'grace@example.com', '$2a$10$2VdGIx4whctzdoP.KPiYy.f7xIdGhU8ci2YnBgfInJRNvOwQl.bQe', 'Grace Blue', 'MEMBER', NOW(), NOW()),
-(12, 'harry_potter', 'harry@example.com', '$2a$10$2VdGIx4whctzdoP.KPiYy.f7xIdGhU8ci2YnBgfInJRNvOwQl.bQe', 'Harry Potter', 'MEMBER', NOW(), NOW());
+(3, 'basiru_jallow', 'basiru@example.com', '$2a$10$2VdGIx4whctzdoP.KPiYy.f7xIdGhU8ci2YnBgfInJRNvOwQl.bQe', 'Basiru Jallow', 'MEMBER', NOW(), NOW()),
+(4, 'ebrima_njie', 'ebrima@example.com', '$2a$10$2VdGIx4whctzdoP.KPiYy.f7xIdGhU8ci2YnBgfInJRNvOwQl.bQe', 'Ebrima Njie', 'MEMBER', NOW(), NOW()),
+(5, 'abdoulie_jallow', 'abdoulie@example.com', '$2a$10$2VdGIx4whctzdoP.KPiYy.f7xIdGhU8ci2YnBgfInJRNvOwQl.bQe', 'Abdoulie Jallow', 'MEMBER', NOW(), NOW()),
+(6, 'fatou_bojang', 'fatou@example.com', '$2a$10$2VdGIx4whctzdoP.KPiYy.f7xIdGhU8ci2YnBgfInJRNvOwQl.bQe', 'Fatou Bojang', 'MEMBER', NOW(), NOW()),
+(7, 'mariama_camara', 'mariama@example.com', '$2a$10$2VdGIx4whctzdoP.KPiYy.f7xIdGhU8ci2YnBgfInJRNvOwQl.bQe', 'Mariama Camara', 'MEMBER', NOW(), NOW()),
+(8, 'kemo_sonko', 'kemo@example.com', '$2a$10$2VdGIx4whctzdoP.KPiYy.f7xIdGhU8ci2YnBgfInJRNvOwQl.bQe', 'Kemo Sonko', 'MEMBER', NOW(), NOW()),
+(9, 'ainetou_sowe', 'ainetou@example.com', '$2a$10$2VdGIx4whctzdoP.KPiYy.f7xIdGhU8ci2YnBgfInJRNvOwQl.bQe', 'Ainetou Sowe', 'MEMBER', NOW(), NOW()),
+(10, 'lamin_darboe', 'lamin@example.com', '$2a$10$2VdGIx4whctzdoP.KPiYy.f7xIdGhU8ci2YnBgfInJRNvOwQl.bQe', 'Lamin Darboe', 'MEMBER', NOW(), NOW()),
+(11, 'isatou_njie', 'isatou@example.com', '$2a$10$2VdGIx4whctzdoP.KPiYy.f7xIdGhU8ci2YnBgfInJRNvOwQl.bQe', 'Isatou Njie', 'MEMBER', NOW(), NOW()),
+(12, 'musa_touray', 'musa@example.com', '$2a$10$2VdGIx4whctzdoP.KPiYy.f7xIdGhU8ci2YnBgfInJRNvOwQl.bQe', 'Musa Touray', 'MEMBER', NOW(), NOW());
 
 -- Members
 INSERT INTO members (user_id, membership_number, phone_number, address, membership_type, membership_start_date, membership_end_date, is_active, created_at, updated_at) VALUES
-(3, 'MEM001', '555-0101', '123 Main St', 'STUDENT', CURRENT_DATE, DATE_ADD(CURRENT_DATE, INTERVAL 1 YEAR), true, NOW(), NOW()),
-(4, 'MEM002', '555-0102', '456 Oak Ave', 'FACULTY', CURRENT_DATE, DATE_ADD(CURRENT_DATE, INTERVAL 1 YEAR), true, NOW(), NOW()),
-(5, 'MEM003', '555-0103', '789 Pine Rd', 'PUBLIC', CURRENT_DATE, DATE_ADD(CURRENT_DATE, INTERVAL 1 YEAR), true, NOW(), NOW()),
-(6, 'MEM004', '555-0104', '321 Elm St', 'STUDENT', CURRENT_DATE, DATE_ADD(CURRENT_DATE, INTERVAL 1 YEAR), true, NOW(), NOW()),
-(7, 'MEM005', '555-0105', '654 Maple Dr', 'PUBLIC', CURRENT_DATE, DATE_ADD(CURRENT_DATE, INTERVAL 1 YEAR), true, NOW(), NOW()),
-(8, 'MEM006', '555-0106', '987 Cedar Ln', 'FACULTY', CURRENT_DATE, DATE_ADD(CURRENT_DATE, INTERVAL 1 YEAR), true, NOW(), NOW()),
-(9, 'MEM007', '555-0107', '147 Birch Blvd', 'STUDENT', CURRENT_DATE, DATE_ADD(CURRENT_DATE, INTERVAL 1 YEAR), true, NOW(), NOW()),
-(10, 'MEM008', '555-0108', '258 Walnut Way', 'PUBLIC', DATE_SUB(CURRENT_DATE, INTERVAL 1 MONTH), DATE_ADD(CURRENT_DATE, INTERVAL 11 MONTH), true, NOW(), NOW()),
-(11, 'MEM009', '555-0109', '369 Spruce Ct', 'STUDENT', CURRENT_DATE, DATE_ADD(CURRENT_DATE, INTERVAL 1 YEAR), false, NOW(), NOW()),
-(12, 'MEM010', '555-0110', '741 Ash Pl', 'PUBLIC', CURRENT_DATE, DATE_ADD(CURRENT_DATE, INTERVAL 1 YEAR), true, NOW(), NOW());
+(3, 'MEM001', '555-0101', '22 Kairaba Avenue, Serrekunda', 'STUDENT', CURRENT_DATE, DATE_ADD(CURRENT_DATE, INTERVAL 1 YEAR), true, NOW(), NOW()),
+(4, 'MEM002', '555-0102', '15 Marina Parade, Banjul', 'FACULTY', CURRENT_DATE, DATE_ADD(CURRENT_DATE, INTERVAL 1 YEAR), true, NOW(), NOW()),
+(5, 'MEM003', '555-0103', '10 Kombo Sillah Drive, Bakoteh', 'PUBLIC', CURRENT_DATE, DATE_ADD(CURRENT_DATE, INTERVAL 1 YEAR), true, NOW(), NOW()),
+(6, 'MEM004', '555-0104', '5 Senegambia Highway, Kololi', 'STUDENT', CURRENT_DATE, DATE_ADD(CURRENT_DATE, INTERVAL 1 YEAR), true, NOW(), NOW()),
+(7, 'MEM005', '555-0105', '8 Bertil Harding Highway, Brusubi', 'PUBLIC', CURRENT_DATE, DATE_ADD(CURRENT_DATE, INTERVAL 1 YEAR), true, NOW(), NOW()),
+(8, 'MEM006', '555-0106', '12 Atlantic Boulevard, Bakau', 'FACULTY', CURRENT_DATE, DATE_ADD(CURRENT_DATE, INTERVAL 1 YEAR), true, NOW(), NOW()),
+(9, 'MEM007', '555-0107', '34 Sayerr Jobe Avenue, Serekunda', 'STUDENT', CURRENT_DATE, DATE_ADD(CURRENT_DATE, INTERVAL 1 YEAR), true, NOW(), NOW()),
+(10, 'MEM008', '555-0108', '18 Mosque Road, Latrikunda', 'PUBLIC', DATE_SUB(CURRENT_DATE, INTERVAL 1 MONTH), DATE_ADD(CURRENT_DATE, INTERVAL 11 MONTH), true, NOW(), NOW()),
+(11, 'MEM009', '555-0109', '7 Mamadi Manjang Highway, Kanifing', 'STUDENT', CURRENT_DATE, DATE_ADD(CURRENT_DATE, INTERVAL 1 YEAR), false, NOW(), NOW()),
+(12, 'MEM010', '555-0110', '25 Brikama Highway, Brikama', 'PUBLIC', CURRENT_DATE, DATE_ADD(CURRENT_DATE, INTERVAL 1 YEAR), true, NOW(), NOW());
 
 -- Books
 INSERT INTO books (book_id, isbn, title, author, publication_year, total_copies, available_copies, created_at, updated_at) VALUES

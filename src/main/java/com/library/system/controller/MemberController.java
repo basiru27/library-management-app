@@ -6,6 +6,9 @@ import com.library.system.dto.MemberRequestDTO;
 import com.library.system.service.MemberService;
 import jakarta.validation.Valid;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
@@ -23,8 +26,8 @@ public class MemberController {
 
     @GetMapping
     @PreAuthorize("hasAnyRole('ADMIN', 'LIBRARIAN')")
-    public ResponseEntity<List<MemberDTO>> getAllMembers() {
-        return ResponseEntity.ok(memberService.getAllMembers());
+    public ResponseEntity<Page<MemberDTO>> getAllMembers(@PageableDefault(size = 10) Pageable pageable) {
+        return ResponseEntity.ok(memberService.getAllMembers(pageable));
     }
 
     @GetMapping("/{id}")

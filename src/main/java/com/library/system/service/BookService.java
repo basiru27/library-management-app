@@ -7,6 +7,8 @@ import com.library.system.model.Book;
 import com.library.system.model.BorrowingStatus;
 import com.library.system.repository.BookRepository;
 import com.library.system.repository.BorrowingRecordRepository;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
@@ -23,10 +25,9 @@ public class BookService {
         this.borrowingRecordRepository = borrowingRecordRepository;
     }
 
-    public List<BookDTO> getAllBooks() {
-        return bookRepository.findAll().stream()
-                .map(this::mapToDTO)
-                .collect(Collectors.toList());
+    public Page<BookDTO> getAllBooks(Pageable pageable) {
+        return bookRepository.findAll(pageable)
+                .map(this::mapToDTO);
     }
 
     public BookDTO getBookById(Long id) {

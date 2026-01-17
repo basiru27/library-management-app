@@ -75,3 +75,43 @@ The application automatically seeds the database with sample users and books on 
 - **Admin**: `admin` / `password`
 - **Librarian**: `librarian` / `password`
 - **Member**: `john_doe` / `password`
+
+## Frontend Application
+
+The project includes a modern React-based frontend located in the `client/` directory.
+
+### Tech Stack
+- **Framework**: React + Vite
+- **Styling**: Tailwind CSS
+- **Icons**: Lucide React
+- **HTTP Client**: Axios
+
+### Frontend Features
+- **Dashboard**: Role-specific stats and activity feed.
+- **Book Management**: Searchable book catalog with availability status.
+- **Member Management**: Admin tools to register and manage members.
+- **Borrowing System**: Streamlined "Issue Book" modal with autocomplete for Books and Members.
+- **Role-Based Access**:
+  - **Admin**: Full access to Member, Book management.
+  - **Librarian**: Access to Borrowing, Returns, and Overdue tracking.
+  - **Member**: View-only access to available books.
+
+### Running the Frontend
+1.  **Navigate to client directory**:
+    ```bash
+    cd client
+    ```
+2.  **Install Dependencies**:
+    ```bash
+    npm install
+    ```
+3.  **Start Development Server**:
+    ```bash
+    npm run dev
+    ```
+    The frontend will start on `http://localhost:5173` (by default).
+
+### Default Credentials for Testing Frontend
+- **Admin**: `admin` / `password`
+- **Librarian**: `librarian` / `password`
+- **Member**: `john_doe` / `password`
